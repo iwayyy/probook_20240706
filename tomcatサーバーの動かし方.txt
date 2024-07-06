@@ -1,0 +1,6 @@
+2024年07月06日　プロになるためのJavaの第6章を実施。
+
+Tomcatサーバーから実行と記載されていたが、エディタが違うので
+VSCodeのTomcatの動かし方を検索。
+参考URL
+https://zenn.dev/yamamoto99/articles/e215dc6ea132bf#maven%E3%81%A7war%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B
