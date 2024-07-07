@@ -1,34 +1,32 @@
 package com.example.tasklist;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
-@RestController
+@Controller
 public class HomeRestController {
 
     record TaskItem(String id, String task, String deadline, boolean done){}
     private List<TaskItem> taskItems = new ArrayList<>();
     
-    @RequestMapping("/resthello")
-    String Hello(){
-        return """
-                Hello.
-                It works!
-                現在時刻は%sです。
-                """.formatted(LocalDateTime.now());
+    @RequestMapping("/hello")
+    String Hello(Model model){
+        model.addAttribute("time", LocalDateTime.now());
+        return "hello";
     }
 
 
-    @GetMapping("/restadd")
+    @GetMapping("/add")
     String addItem(@RequestParam("task") String task,
                   @RequestParam("deadline") String deadline){
 
@@ -36,14 +34,12 @@ public class HomeRestController {
         TaskItem item = new TaskItem(id, task, deadline, false);
         taskItems.add(item);
                     
-        return "タスクを追加しました。";
+        return "redirect:/list";
     }
 
-    @GetMapping("/restlist")    
-    String listItems(){
-        String result = taskItems.stream()
-                        .map(TaskItem :: toString)
-                        .collect(Collectors.joining(","));
-        return result;
+    @GetMapping("list")    
+    String listItems(Model model){
+        model.addAttribute("tasklist", taskItems);
+        return "home";
     }
 }
