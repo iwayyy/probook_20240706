@@ -2,7 +2,7 @@ services:
 type: web
 name: probook_20240706
 env: docker
-dockerfilePath: Dockerfile
+dockerfilePath: ./tasklist/dockerfile
 branch: main
 buileCommand: ./mvnw clean package
 startCommand: java -Dserver.port=$PORT -jar target/tasklist
