@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TaskList</name>
 	<description>プロになるJavaの本6章の構築</description>
+	<packaging>war</packaging>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,6 +31,12 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -47,6 +54,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<packaging>war</packaging>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
