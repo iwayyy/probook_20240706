@@ -1,7 +1,7 @@
 services:
 type: web
 name: probook_20240706
-env: docker
-dockerfilePath: dockerfile
+env: probook_20240706/tasklist
+dockerfilePath: probook_20240706/tasklist
 branch: main
 startCommand: java -Dserver.port=$PORT -jar target/tasklist-0.0.1-SNAPSHOT.war
